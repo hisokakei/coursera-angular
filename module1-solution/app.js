@@ -1,21 +1,42 @@
 (function () {
 'use strict';
 
-angular.module('MsgApp', [])
-.controller('MsgController', MsgController);
+angular.module('LunchCheck', [])
+.controller('LunchCheckController', LunchCheckController);
 
-MsgController.$inject = ['$scope'];
-function MsgController($scope) {
-  $scope.name = "Yaakov";
-  $scope.stateOfBeing = "hungry";
+LunchCheckController.$inject = ['$scope'];
+function LunchCheckController($scope) {
+  var greenColor = {color:"green"};
+  var redColor = {color:"red"};
 
-  $scope.sayMessage = function () {
-    return "Yaakov likes to eat healthy snacks at night!";
+  $scope.items = "";
+  $scope.color = greenColor;
+  $scope.msg = "";
+
+  $scope.checkItems = function(){
+    var items = $scope.items;
+    if(items == ""){
+      $scope.color = redColor;
+      $scope.msg = "Please enter data first";
+    } else {
+      $scope.color = greenColor;
+      var itemSplit = items.split(",");
+      if(itemCount(itemSplit) > 3){
+        $scope.msg = "Too much!";
+      } else {
+        $scope.msg = "Enjoy!";
+      }
+    }
   };
+}
 
-  $scope.feedYaakov = function () {
-    $scope.stateOfBeing = "fed";
-  };
+function itemCount(items){
+  var count = 0;
+  items.forEach(function(e) {
+    if(e.trim() != "")
+      count++;
+  });
+  return count;
 }
 
 })();
