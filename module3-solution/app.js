@@ -41,7 +41,10 @@
         narrow.found = [];
 
         narrow.getMatchedMenuItems = function() {
-            narrow.found = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
+            MenuSearchService.getMatchedMenuItems(narrow.searchTerm)
+                .then(function(result) {
+                    narrow.found = result;
+                });
         };
 
         narrow.removeItem = function(index) {
