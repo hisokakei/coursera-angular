@@ -62,7 +62,7 @@
             });
 
             return promise.then(function(response) {
-                var data = response.data;
+                var data = response.data.menu_items;
                 var foundItems = [];
                 data.forEach(function(item) {
                     if (item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1)
