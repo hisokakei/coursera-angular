@@ -1,10 +1,10 @@
-<div class="row">
-    <table>
+<div class="found-item">
+    <table class="table-bordered">
         <tr ng-repeat="item in list.items">
             <td>{{ item.name }}</td>
             <td>{{ item.short_name }}</td>
             <td>{{ item.description }}</td>
-            <td><button class="narrow-button" ng-click="list.onRemove({index: $index});">Don't want this one!</button></td>
+            <td><button class="btn btn-primary" ng-click="list.onRemove({index: $index});">Don't want this one!</button></td>
         </tr>
     </table>
     <div ng-if="list.isEmpty();">Nothing found</div>
