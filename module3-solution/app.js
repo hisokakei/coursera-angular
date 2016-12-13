@@ -41,9 +41,14 @@
         narrow.found = [];
 
         narrow.getMatchedMenuItems = function() {
+            if (narrow.searchTerm === "") {
+                narrow.found = [];
+                return;
+            }
             MenuSearchService.getMatchedMenuItems(narrow.searchTerm)
                 .then(function(result) {
                     narrow.found = result;
+                    console.log(narrow.found);
                 });
         };
 
